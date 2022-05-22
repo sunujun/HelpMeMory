@@ -2,10 +2,34 @@ package com.example.helpmemory
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import com.example.helpmemory.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val toDoFragment = ToDoFragment()
+        val keywordFragment = KeywordFragment()
+        initFragment(toDoFragment)
+
+        binding.menuBottomNavigation.setOnItemSelectedListener {
+            when(it.itemId) {
+                R.id.toDo -> initFragment(toDoFragment)
+                R.id.keyword -> initFragment(keywordFragment)
+            }
+            true
+        }
+    }
+
+    private fun initFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.menuFrameLayout, fragment)
+            commit()
+        }
     }
 }
