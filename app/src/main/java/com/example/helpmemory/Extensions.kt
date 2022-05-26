@@ -1,7 +1,6 @@
 package com.example.helpmemory
 
 import android.content.Context
-import android.graphics.drawable.GradientDrawable
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +8,6 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import androidx.annotation.ColorRes
-import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
 import androidx.core.content.ContextCompat
 import java.time.DayOfWeek
@@ -44,14 +42,11 @@ internal val Context.layoutInflater: LayoutInflater
 internal val Context.inputMethodManager
     get() = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
-internal inline fun Boolean?.orFalse(): Boolean = this ?: false
-
-internal fun Context.getDrawableCompat(@DrawableRes drawable: Int) = ContextCompat.getDrawable(this, drawable)
-
 internal fun Context.getColorCompat(@ColorRes color: Int) = ContextCompat.getColor(this, color)
 
 internal fun TextView.setTextColorRes(@ColorRes color: Int) = setTextColor(context.getColorCompat(color))
 
+// 그 달의 1일이 무슨 요일인지 계산하는 함수
 fun daysOfWeekFromLocale(): Array<DayOfWeek> {
     val firstDayOfWeek = WeekFields.of(Locale.getDefault()).firstDayOfWeek
     var daysOfWeek = DayOfWeek.values()
@@ -63,18 +58,4 @@ fun daysOfWeekFromLocale(): Array<DayOfWeek> {
         daysOfWeek = rhs + lhs
     }
     return daysOfWeek
-}
-
-fun GradientDrawable.setCornerRadius(
-    topLeft: Float = 0F,
-    topRight: Float = 0F,
-    bottomRight: Float = 0F,
-    bottomLeft: Float = 0F
-) {
-    cornerRadii = arrayOf(
-        topLeft, topLeft,
-        topRight, topRight,
-        bottomRight, bottomRight,
-        bottomLeft, bottomLeft
-    ).toFloatArray()
 }
