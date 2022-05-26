@@ -16,6 +16,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.view.children
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -146,7 +147,7 @@ class ToDoFragment : Fragment() {
             override fun bind(container: DayViewContainer, day: CalendarDay) {
                 container.day = day
                 val textView = container.binding.dayText
-//                val dotView = container.binding.exThreeDotView
+                val dotView = container.binding.dotView
 
                 textView.text = day.date.dayOfMonth.toString()
 
@@ -156,22 +157,22 @@ class ToDoFragment : Fragment() {
                         today -> {
                             textView.setTextColorRes(R.color.white)
                             textView.setBackgroundResource(R.drawable.today_background)
-//                            dotView.makeInVisible()
+                            dotView.makeInVisible()
                         }
                         selectedDate -> {
                             textView.setTextColorRes(R.color.blue)
                             textView.setBackgroundResource(R.drawable.selected_background)
-//                            dotView.makeInVisible()
+                            dotView.makeInVisible()
                         }
                         else -> {
                             textView.setTextColorRes(R.color.black)
                             textView.background = null
-//                            dotView.isVisible = events[day.date].orEmpty().isNotEmpty()
+                            dotView.isVisible = todos[day.date].orEmpty().isNotEmpty()
                         }
                     }
                 } else {
                     textView.makeInVisible()
-//                    dotView.makeInVisible()
+                    dotView.makeInVisible()
                 }
             }
         }
