@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    android:id="@+id/cl_calendar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ToDoFragment">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
 
-    <TextView
+
+    <com.kizitonwose.calendarview.CalendarView
+        android:id="@+id/calendarView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="ToDo"
-        android:textColor="@android:color/black"
-        android:textSize="50sp"/>
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingHorizontal="1dp"
+        android:paddingBottom="10dp"
+        app:cv_dayViewResource="@layout/calendar_day_layout"
+        app:cv_hasBoundaries="true"
+        app:cv_orientation="vertical"
+        app:cv_outDateStyle="endOfGrid"
+        app:cv_scrollMode="paged" />
 
-</LinearLayout >
+</LinearLayout>
