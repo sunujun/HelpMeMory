@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">HelpMeMory</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="input_dialog_title">ToDo를 작성해주세요</string>
+    <string name="empty_input_text">할 일을 채워주세요</string>
+    <string name="dialog_delete_confirmation">삭제하시겠습니까?</string>
+    <string name="delete">삭제</string>
+    <string name="save">저장</string>
+    <string name="close">닫기</string>
 </resources>
