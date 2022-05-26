@@ -9,20 +9,16 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.view.children
 import com.example.helpmemory.databinding.CalendarDayLayoutBinding
-import com.example.helpmemory.databinding.CalendarHeaderLayoutBinding
 import com.example.helpmemory.databinding.FragmentToDoBinding
 import com.kizitonwose.calendarview.model.CalendarDay
-import com.kizitonwose.calendarview.model.CalendarMonth
 import com.kizitonwose.calendarview.model.DayOwner
 import com.kizitonwose.calendarview.ui.DayBinder
-import com.kizitonwose.calendarview.ui.MonthHeaderFooterBinder
 import com.kizitonwose.calendarview.ui.ViewContainer
 import com.kizitonwose.calendarview.utils.yearMonth
 import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
-import java.time.temporal.WeekFields
 import java.util.*
 
 class ToDoFragment : Fragment() {
