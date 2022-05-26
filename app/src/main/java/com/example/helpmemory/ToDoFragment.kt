@@ -47,22 +47,22 @@ class ToDoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val daysOfWeek = daysOfWeekFromLocale()
-        binding.legendLayout.root.children.forEachIndexed { index, view ->
+        binding.weekLayout.root.children.forEachIndexed { index, view ->
             (view as TextView).apply {
                 text = daysOfWeek[index].getDisplayName(TextStyle.SHORT, Locale.ENGLISH).uppercase(Locale.ENGLISH)
-                setTextColor(Color.WHITE)
+                setTextColorRes(R.color.white_light)
             }
         }
 
         val currentMonth = YearMonth.now()
 
-        binding.exThreeCalendar.apply {
+        binding.calendarView.apply {
             setup(currentMonth.minusMonths(10), currentMonth.plusMonths(10), daysOfWeek.first())
             scrollToMonth(currentMonth)
         }
 
         if (savedInstanceState == null) {
-            binding.exThreeCalendar.post {
+            binding.calendarView.post {
                 // Show today's events initially.
                 selectDate(today)
             }
@@ -80,11 +80,11 @@ class ToDoFragment : Fragment() {
                 }
             }
         }
-        binding.exThreeCalendar.dayBinder = object : DayBinder<DayViewContainer> {
+        binding.calendarView.dayBinder = object : DayBinder<DayViewContainer> {
             override fun create(view: View) = DayViewContainer(view)
             override fun bind(container: DayViewContainer, day: CalendarDay) {
                 container.day = day
-                val textView = container.binding.exThreeDayText
+                val textView = container.binding.dayText
 //                val dotView = container.binding.exThreeDotView
 
                 textView.text = day.date.dayOfMonth.toString()
@@ -93,18 +93,17 @@ class ToDoFragment : Fragment() {
                     textView.makeVisible()
                     when (day.date) {
                         today -> {
-//                            textView.setTextColor(Color.WHITE)
-                              textView.setTextColor(Color.BLACK)
-//                            textView.setBackgroundResource(R.drawable.example_3_today_bg)
+                            textView.setTextColorRes(R.color.white)
+                            textView.setBackgroundResource(R.drawable.today_background)
 //                            dotView.makeInVisible()
                         }
                         selectedDate -> {
-                            textView.setTextColor(Color.BLUE)
-//                            textView.setBackgroundResource(R.drawable.example_3_selected_bg)
+                            textView.setTextColorRes(R.color.blue)
+                            textView.setBackgroundResource(R.drawable.selected_background)
 //                            dotView.makeInVisible()
                         }
                         else -> {
-                            textView.setTextColor(Color.BLACK)
+                            textView.setTextColorRes(R.color.black)
                             textView.background = null
 //                            dotView.isVisible = events[day.date].orEmpty().isNotEmpty()
                         }
@@ -116,27 +115,23 @@ class ToDoFragment : Fragment() {
             }
         }
 
-        binding.exThreeCalendar.monthScrollListener = {
-            if (binding.exThreeCalendar.maxRowCount == 6) {
-                binding.exOneYearText.text = it.yearMonth.year.toString()
-                binding.exOneMonthText.text = monthTitleFormatter.format(it.yearMonth)
+        binding.calendarView.monthScrollListener = {
+            if (binding.calendarView.maxRowCount == 6) {
+                binding.yearText.text = it.yearMonth.year.toString()
+                binding.monthText.text = monthTitleFormatter.format(it.yearMonth)
             } else {
-                // In week mode, we show the header a bit differently.
-                // We show indices with dates from different months since
-                // dates overflow and cells in one index can belong to different
-                // months/years.
                 val firstDate = it.weekDays.first().first().date
                 val lastDate = it.weekDays.last().last().date
                 if (firstDate.yearMonth == lastDate.yearMonth) {
-                    binding.exOneYearText.text = firstDate.yearMonth.year.toString()
-                    binding.exOneMonthText.text = monthTitleFormatter.format(firstDate)
+                    binding.yearText.text = firstDate.yearMonth.year.toString()
+                    binding.monthText.text = monthTitleFormatter.format(firstDate)
                 } else {
-                    binding.exOneMonthText.text =
+                    binding.monthText.text =
                         "${monthTitleFormatter.format(firstDate)} - ${monthTitleFormatter.format(lastDate)}"
                     if (firstDate.year == lastDate.year) {
-                        binding.exOneYearText.text = firstDate.yearMonth.year.toString()
+                        binding.yearText.text = firstDate.yearMonth.year.toString()
                     } else {
-                        binding.exOneYearText.text = "${firstDate.yearMonth.year} - ${lastDate.yearMonth.year}"
+                        binding.yearText.text = "${firstDate.yearMonth.year} - ${lastDate.yearMonth.year}"
                     }
                 }
             }
@@ -151,8 +146,8 @@ class ToDoFragment : Fragment() {
         if (selectedDate != date) {
             val oldDate = selectedDate
             selectedDate = date
-            oldDate?.let { binding.exThreeCalendar.notifyDateChanged(it) }
-            binding.exThreeCalendar.notifyDateChanged(date)
+            oldDate?.let { binding.calendarView.notifyDateChanged(it) }
+            binding.calendarView.notifyDateChanged(date)
             updateAdapterForDate(date)
         }
     }
@@ -163,6 +158,6 @@ class ToDoFragment : Fragment() {
 //            events.addAll(this@Example3Fragment.events[date].orEmpty())
 //            notifyDataSetChanged()
 //        }
-        binding.exThreeSelectedDateText.text = selectionFormatter.format(date)
+        binding.selectedDateText.text = selectionFormatter.format(date)
     }
 }
