@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/skyblue"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#FFFFFF"
+        android:fontFamily="@font/charmonman"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="New Keyword ❀"
+        android:textColor="#E884A6"
+        android:textSize="42sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="389dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#F8F5DA"
+            android:gravity="center"
+            android:hint="등록할 키워드명을 입력해주세요."
+            android:textColorHint="#000000" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="284dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:backgroundTint="#FBECEB"
+                android:gravity="center"
+                android:hint="키워드의 내용 및 중요한 점을 입력해주세요." />
+
+        </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/Regbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/circle_button"
+        android:backgroundTint="#B6ED77"
+        android:fontFamily="@font/smile"
+        android:foregroundTint="#FFFFFF"
+        android:text="등록하기"
+        android:textColor="#6275DF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:iconTint="#F4EFEF"
+        app:strokeColor="#FFFFFF" />
+
+</LinearLayout>

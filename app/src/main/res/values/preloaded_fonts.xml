@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/smile</item>
+        <item>@font/allerta</item>
+        <item>@font/autour_one</item>
+        <item>@font/barriecito</item>
+        <item>@font/bubblegum_sans</item>
+        <item>@font/charm_bold</item>
+        <item>@font/charmonman</item>
+        <item>@font/cherry_cream_soda</item>
+        <item>@font/doppio_one</item>
+        <item>@font/hanalei_fill</item>
+        <item>@font/kavoon</item>
+        <item>@font/lemon</item>
+        <item>@font/luckiest_guy</item>
+        <item>@font/mogra</item>
+        <item>@font/montserrat_subrayada</item>
+        <item>@font/pacifico</item>
+        <item>@font/titan_one</item>
+    </array>
+</resources>
