@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:padding="20dp">
+
+
+        <Button
+            android:id="@+id/addfolder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="50dp"
+            android:text="폴더 추가"
+            android:textColor="@color/black"/>
+
+        <Button
+            android:id="@+id/addkeyword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="키워드 추가"
+            android:textColor="@color/black"
+            />
+    </LinearLayout>
+
+</LinearLayout>
