@@ -6,10 +6,11 @@
     android:padding="20dp"
     android:background="?attr/selectableItemBackground"
     xmlns:tools="http://schemas.android.com/tools">
+
     <TextView
         android:id="@+id/toDoText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp"
-        tools:text="" />
+        tools:text=""/>
 </FrameLayout>

@@ -3,38 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1955" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/drawable-v24/tab_selector.xml" value="0.1" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/drawable/circle_button.xml" value="0.175" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/drawable/ic_add.xml" value="0.1955" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1955" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/drawable/selected_background.xml" value="0.1955" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/drawable/tab_selector.xml" value="0.1765" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/drawable/today_background.xml" value="0.1955" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/font/autour_one.xml" value="0.1" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/font/font_family.xml" value="0.1" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/font/hanalei_fill.xml" value="0.1" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/font/lemon.xml" value="0.175" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/font/mogra.xml" value="0.1" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/font/montserrat_subrayada.xml" value="0.175" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/layout/activity_bottom_tab.xml" value="0.1890625" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/layout/activity_main.xml" value="0.18489583333333334" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/layout/bottom_activity.xml" value="0.18489583333333334" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/layout/calendar_day_layout.xml" value="0.1875" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/layout/calendar_day_of_weeks.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/layout/calendar_header_layout.xml" value="0.1875" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/layout/calendar_week_layout.xml" value="0.1875" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/layout/folder_item.xml" value="0.1" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/layout/folder_list.xml" value="0.1" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/layout/fragment_keyword.xml" value="0.1890625" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/layout/fragment_to_do.xml" value="0.1" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/layout/keyword_item.xml" value="0.18206521739130435" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/layout/keyword_list.xml" value="0.1" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/layout/kwrdlist.xml" value="0.1" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/layout/newfldr.xml" value="0.125" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/layout/newkwrd.xml" value="0.125" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/layout/todo_item_row.xml" value="0.1875" />
-        <entry key="..\:/Users/tiger/AndroidStudioProjects/HelpMeMory/app/src/main/res/menu/menu_bottom.xml" value="0.18489583333333334" />
+        <entry key="..\:/Users/gyeoulnamu/gyeoul_coding/mobile/HelpMeMory/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/gyeoulnamu/gyeoul_coding/mobile/HelpMeMory/app/src/main/res/layout/calendar_day_layout.xml" value="0.22" />
+        <entry key="..\:/Users/gyeoulnamu/gyeoul_coding/mobile/HelpMeMory/app/src/main/res/layout/calendar_week_layout.xml" value="0.22" />
+        <entry key="..\:/Users/gyeoulnamu/gyeoul_coding/mobile/HelpMeMory/app/src/main/res/layout/fragment_to_do.xml" value="0.22" />
+        <entry key="..\:/Users/gyeoulnamu/gyeoul_coding/mobile/HelpMeMory/app/src/main/res/layout/todo_item_row.xml" value="0.22" />
       </map>
     </option>
   </component>
