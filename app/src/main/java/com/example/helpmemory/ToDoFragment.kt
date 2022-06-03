@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.helpmemory.databinding.CalendarDayLayoutBinding
 import com.example.helpmemory.databinding.FragmentToDoBinding
+import com.example.helpmemory.databinding.PickerDlgLayoutBinding
 import com.kizitonwose.calendarview.model.CalendarDay
 import com.kizitonwose.calendarview.model.DayOwner
 import com.kizitonwose.calendarview.ui.DayBinder
@@ -50,29 +51,63 @@ class ToDoFragment : Fragment() {
             .setNegativeButton(R.string.close, null)
             .show()
     }
+    var message = ""
 
     // todo 추가하는 dialog
     private val inputDialog by lazy {
-        val editText = AppCompatEditText(requireContext())
-        val layout = FrameLayout(requireContext()).apply {
-            val padding = dpToPx(20, requireContext())
-            setPadding(padding, padding, padding, padding)
-            addView(editText, FrameLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT))
-        }
-        AlertDialog.Builder(requireContext())
-            .setTitle(getString(R.string.input_dialog_title))
-            .setView(layout)
-            .setPositiveButton(R.string.save) { _, _ ->
-                saveTodo(editText.text.toString())
-                editText.setText("")
+//        val editText = AppCompatEditText(requireContext())
+//        val layout = FrameLayout(requireContext()).apply {
+//            val padding = dpToPx(20, requireContext())
+//            setPadding(padding, padding, padding, padding)
+//            addView(editText, FrameLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT))
+//        }
+//
+//        AlertDialog.Builder(requireContext())
+//            .setTitle(getString(R.string.input_dialog_title))
+//            .setView(layout)
+//            .setPositiveButton(R.string.save) { _, _ ->
+//                saveTodo(editText.text.toString())
+//                editText.setText("")
+//            }
+//            .setNegativeButton(R.string.close, null)
+//            .create()
+//            .apply {
+//                setOnShowListener {
+//                    // 키보드 보이기
+//                    editText.requestFocus()
+//                    context.inputMethodManager.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT)
+//                }
+//                setOnDismissListener {
+//                    // 키보드 숨기기
+//                    context.inputMethodManager.hideSoftInputFromWindow(currentFocus?.windowToken,
+//                        InputMethodManager.HIDE_NOT_ALWAYS)
+//                }
+//            }
+        val dlgBinding = PickerDlgLayoutBinding.inflate(layoutInflater)
+        val dlgBuilder = AlertDialog.Builder(requireContext())
+        dlgBuilder.setView(dlgBinding.root)
+            .setPositiveButton("저장") { _, _ ->
+                saveTodo(dlgBinding.inputToDo.text.toString())
+                dlgBinding.inputToDo.setText("")
+                message = dlgBinding.timePicker.hour.toString() + "시 " +
+                        dlgBinding.timePicker.minute.toString() + "분 " +
+                        dlgBinding.inputToDo.text.toString()
+                val timeTask = object : TimerTask() {
+                    override fun run() {
+//                        makeNotification()
+                    }
+                }
+//                val timer = Timer()
+//                timer.schedule(timeTask, 5000)
+//                Toast.makeText(requireContext(), "알림이 추가됨", Toast.LENGTH_SHORT).show()
             }
-            .setNegativeButton(R.string.close, null)
+            .setNegativeButton("취소", null)
             .create()
             .apply {
                 setOnShowListener {
                     // 키보드 보이기
-                    editText.requestFocus()
-                    context.inputMethodManager.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT)
+                    dlgBinding.inputToDo.requestFocus()
+                    context.inputMethodManager.showSoftInput(dlgBinding.inputToDo, InputMethodManager.SHOW_IMPLICIT)
                 }
                 setOnDismissListener {
                     // 키보드 숨기기
