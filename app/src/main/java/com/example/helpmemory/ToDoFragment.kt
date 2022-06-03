@@ -87,11 +87,11 @@ class ToDoFragment : Fragment() {
         val dlgBuilder = AlertDialog.Builder(requireContext())
         dlgBuilder.setView(dlgBinding.root)
             .setPositiveButton("저장") { _, _ ->
-                saveTodo(dlgBinding.inputToDo.text.toString())
-                dlgBinding.inputToDo.setText("")
                 message = dlgBinding.timePicker.hour.toString() + "시 " +
                         dlgBinding.timePicker.minute.toString() + "분 " +
                         dlgBinding.inputToDo.text.toString()
+                saveTodo(message)
+                dlgBinding.inputToDo.setText("")
                 val timeTask = object : TimerTask() {
                     override fun run() {
 //                        makeNotification()
