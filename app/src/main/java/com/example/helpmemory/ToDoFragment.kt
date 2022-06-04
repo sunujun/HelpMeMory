@@ -1,7 +1,6 @@
 package com.example.helpmemory
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -206,7 +205,6 @@ class ToDoFragment : Fragment() {
         }
 
         binding.addButton.setOnClickListener {
-            Log.d("btnSetup", "Selected")
             inputDialog.show()
         }
     }

@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         val keywordFragment = KeywordFragment()
         initFragment(toDoFragment)
 
+
         binding.menuBottomNavigation.setOnItemSelectedListener {
             when(it.itemId) {
                 R.id.toDo -> initFragment(toDoFragment)
