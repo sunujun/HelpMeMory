@@ -21,11 +21,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.helpmemory.databinding.CalendarDayLayoutBinding
 import com.example.helpmemory.databinding.FragmentToDoBinding
 import com.example.helpmemory.databinding.PickerDlgLayoutBinding
+import com.example.helpmemory.databinding.TodoUpdateLayoutBinding
 import com.kizitonwose.calendarview.model.CalendarDay
 import com.kizitonwose.calendarview.model.DayOwner
 import com.kizitonwose.calendarview.ui.DayBinder
 import com.kizitonwose.calendarview.ui.ViewContainer
 import com.kizitonwose.calendarview.utils.yearMonth
+import java.io.FileOutputStream
 import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
@@ -34,6 +36,7 @@ import java.util.*
 
 class ToDoFragment : Fragment() {
     private lateinit var binding: FragmentToDoBinding
+    lateinit var toDoDBHelper: ToDoDBHelper
     // 선택된 날짜
     private var selectedDate: LocalDate? = null
     // 오늘 날짜
@@ -41,48 +44,11 @@ class ToDoFragment : Fragment() {
     private val monthTitleFormatter = DateTimeFormatter.ofPattern("MMMM")
     private val selectionFormatter = DateTimeFormatter.ofPattern("d MMM yyyy")
     private val todos = mutableMapOf<LocalDate, List<ToDo>>()
-    // todo 클릭 시, 삭제 가능
-    private val todoAdapter = ToDoAdapter {
-        AlertDialog.Builder(requireContext())
-            .setMessage(R.string.dialog_delete_confirmation)
-            .setPositiveButton(R.string.delete) { _, _ ->
-                deleteTodo(it)
-            }
-            .setNegativeButton(R.string.close, null)
-            .show()
-    }
+    lateinit var todoAdapter: ToDoAdapter
     var message = ""
 
     // todo 추가하는 dialog
     private val inputDialog by lazy {
-//        val editText = AppCompatEditText(requireContext())
-//        val layout = FrameLayout(requireContext()).apply {
-//            val padding = dpToPx(20, requireContext())
-//            setPadding(padding, padding, padding, padding)
-//            addView(editText, FrameLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT))
-//        }
-//
-//        AlertDialog.Builder(requireContext())
-//            .setTitle(getString(R.string.input_dialog_title))
-//            .setView(layout)
-//            .setPositiveButton(R.string.save) { _, _ ->
-//                saveTodo(editText.text.toString())
-//                editText.setText("")
-//            }
-//            .setNegativeButton(R.string.close, null)
-//            .create()
-//            .apply {
-//                setOnShowListener {
-//                    // 키보드 보이기
-//                    editText.requestFocus()
-//                    context.inputMethodManager.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT)
-//                }
-//                setOnDismissListener {
-//                    // 키보드 숨기기
-//                    context.inputMethodManager.hideSoftInputFromWindow(currentFocus?.windowToken,
-//                        InputMethodManager.HIDE_NOT_ALWAYS)
-//                }
-//            }
         val dlgBinding = PickerDlgLayoutBinding.inflate(layoutInflater)
         val dlgBuilder = AlertDialog.Builder(requireContext())
         dlgBuilder.setView(dlgBinding.root)
@@ -134,11 +100,56 @@ class ToDoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        toDoDBHelper = ToDoDBHelper(this)
+        todoAdapter = ToDoAdapter()
+        todoAdapter.todos.addAll(toDoDBHelper.selectToDo())
         binding.toDoList.apply {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
             adapter = todoAdapter
             addItemDecoration(DividerItemDecoration(requireContext(), RecyclerView.VERTICAL))
         }
+
+        // DB에서 데이터 불러오기
+        for (receivedTodo in toDoDBHelper.selectToDo()) {
+            todos[receivedTodo.date] = todos[receivedTodo.date].orEmpty().plus(receivedTodo)
+            updateAdapterForDate(receivedTodo.date)
+        }
+
+        // todo 수정, 삭제하는 dialog
+        todoAdapter.itemClickListener = object : ToDoAdapter.OnItemClickListener {
+            override fun OnItemClick(todo: ToDo) {
+                val dlgBinding = TodoUpdateLayoutBinding.inflate(layoutInflater)
+                val dlgBuilder = AlertDialog.Builder(requireContext())
+                val ad = dlgBuilder.create()
+                ad.setView(dlgBinding.root)
+                ad.show()
+                var str = todo.text
+                var delimiter1 = "시 "
+                var delimiter2 = "분 "
+                val parts = str.split(delimiter1, delimiter2, ignoreCase = true)
+                dlgBinding.updateToDo.setText(parts[2])
+                val modifyingToDo = dlgBinding.updateToDo.text.toString()
+                dlgBinding.apply {
+                    cancelBtn.setOnClickListener {
+                        ad.dismiss()
+                    }
+                    deleteBtn.setOnClickListener {
+                        deleteTodo(todo)
+                        ad.dismiss()
+                    }
+                    updateBtn.setOnClickListener {
+                        val modifiedToDo = dlgBinding.updateToDo.text.toString()
+                        if (modifyingToDo == modifiedToDo){
+                            ad.dismiss()
+                        }
+                        deleteTodo(todo)
+                        saveTodo(parts[0].plus(delimiter1).plus(parts[1]).plus(delimiter2).plus(modifiedToDo))
+                        ad.dismiss()
+                    }
+                }
+            }
+        }
+
         // 날짜 위에 요일 표시하는 부분
         val daysOfWeek = daysOfWeekFromLocale()
         binding.weekLayout.root.children.forEachIndexed { index, view ->
@@ -274,7 +285,9 @@ class ToDoFragment : Fragment() {
         // todos에 todo 추가
         else {
             selectedDate?.let {
-                todos[it] = todos[it].orEmpty().plus(ToDo(UUID.randomUUID().toString(), text, it))
+                val toDo = ToDo(UUID.randomUUID().toString(), text, it)
+                todos[it] = todos[it].orEmpty().plus(toDo)
+                toDoDBHelper.insertToDo(toDo)
                 updateAdapterForDate(it)
             }
         }
@@ -284,6 +297,7 @@ class ToDoFragment : Fragment() {
     private fun deleteTodo(todo: ToDo) {
         val date = todo.date
         todos[date] = todos[date].orEmpty().minus(todo)
+        toDoDBHelper.deleteToDo(todo.id)
         updateAdapterForDate(date)
     }
 }
