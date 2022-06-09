@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.helpmemory.databinding.FolderItemRowBinding
+import com.example.helpmemory.databinding.KeywordItemRowBinding
 
 
 class KeywordAdapter (
@@ -35,7 +35,7 @@ class KeywordAdapter (
     var delBtnClickListner:OnDelBtnClickListener?=null
     override fun getItemCount(): Int = values.size
 
-    inner class FolderViewHolder(val binding : FolderItemRowBinding) :
+    inner class FolderViewHolder(val binding : KeywordItemRowBinding) :
         RecyclerView.ViewHolder(binding.root) {
         init{
             binding.textView.setOnClickListener {
@@ -50,7 +50,7 @@ class KeywordAdapter (
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FolderViewHolder {
-        val binding = FolderItemRowBinding.inflate(LayoutInflater.from(parent.context),parent, false)
+        val binding = KeywordItemRowBinding.inflate(LayoutInflater.from(parent.context),parent, false)
         return FolderViewHolder(binding)
 
     }
