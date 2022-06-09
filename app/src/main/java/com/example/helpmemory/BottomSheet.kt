@@ -22,14 +22,15 @@ class BottomSheet : BottomSheetDialogFragment() {
         val addfolder : Button = view.findViewById(R.id.addfolder)
         val addkeyword : Button = view.findViewById(R.id.addkeyword)
 
-        val addFolderFragment = AddFolderFragment()
+//        val addFolderFragment = AddFolderFragment()
+
         val addKeywordFragment = AddKeywordFragment()
 
 
 
 
         addfolder.setOnClickListener {
-            initFragment(addFolderFragment)
+//            initFragment(addFolderFragment)
             dismiss()//버튼 클릭 후 bottomsheet 닫기
 
         }
