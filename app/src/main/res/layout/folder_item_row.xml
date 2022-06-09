@@ -9,10 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
         android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/blue_light"
         android:padding="15dp"
-        android:background="@color/skyblue"
         android:text="TextView" />
 
     <TextView
@@ -22,7 +22,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginBottom="15dp"
+        android:background="@color/lowpink"
         android:padding="15dp"
-        android:background="@color/white"
         android:text="TextView" />
 </LinearLayout>

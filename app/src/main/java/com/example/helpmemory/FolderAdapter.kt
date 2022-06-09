@@ -9,41 +9,47 @@ import com.example.helpmemory.databinding.FolderItemRowBinding
 
 class FolderAdapter (
     private val values: ArrayList<MyKeywordData>
-    ) : RecyclerView.Adapter<FolderAdapter.FolderViewHolder>() {
+) : RecyclerView.Adapter<FolderAdapter.FolderViewHolder>() {
 
-    interface OnItemClickListener{
-        fun OnItemClick(data:MyKeywordData, descriptionView: TextView)
+    interface OnItemClickListener {
+        fun OnItemClick(data: MyKeywordData, descriptionView: TextView)
     }
 
-    fun moveItem(oldPos:Int, newPos:Int){
+    fun moveItem(oldPos: Int, newPos: Int) {
         val item = values[oldPos]
         values.removeAt(oldPos)
         values.add(newPos, item)
         notifyItemMoved(oldPos, newPos)
     }
 
-    fun removeItem(pos:Int){
+    fun removeItem(pos: Int) {
         values.removeAt(pos)
         notifyItemRemoved(pos)
     }
-    var itemClickListener:OnItemClickListener?=null
+
+    var itemClickListener: OnItemClickListener? = null
+
 
     override fun getItemCount(): Int = values.size
 
-    inner class FolderViewHolder(val binding : FolderItemRowBinding) :
+    inner class FolderViewHolder(val binding: FolderItemRowBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        init{
+        init {
             binding.textView.setOnClickListener {
-                itemClickListener?.OnItemClick(values[bindingAdapterPosition], binding.descriptionView)
+                itemClickListener?.OnItemClick(
+                    values[bindingAdapterPosition],
+                    binding.descriptionView
+                )
                 //수업에서 다뤘던 영어단어장에서는 bindingAdapterPosition이 아닌 adapterPosition을 사용했다.
                 //
             }
-
         }
     }
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FolderViewHolder {
-        val binding = FolderItemRowBinding.inflate(LayoutInflater.from(parent.context),parent, false)
+        val binding =
+            FolderItemRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         return FolderViewHolder(binding)
 
@@ -53,13 +59,13 @@ class FolderAdapter (
         holder.binding.textView.text = values[position].keyword
         holder.binding.descriptionView.text = values[position].description
 
-        if(!values[position].isClicked) {
+        if (!values[position].isClicked) {
             holder.binding.descriptionView.visibility = View.GONE
-        }
-        else {
+        } else {
             holder.binding.descriptionView.text = values[position].description
             holder.binding.descriptionView.visibility = View.VISIBLE
 
         }
     }
 }
+

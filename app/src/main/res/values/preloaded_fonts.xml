@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/balsamiq_sans</item>
+        <item>@font/croissant_one</item>
+        <item>@font/emilys_candy</item>
+        <item>@font/gloria_hallelujah</item>
+        <item>@font/gorditas</item>
+        <item>@font/henny_penny</item>
+        <item>@font/kalam_light</item>
+        <item>@font/limelight</item>
+        <item>@font/medievalsharp</item>
+        <item>@font/new_rocker</item>
+        <item>@font/princess_sofia</item>
+        <item>@font/rammetto_one</item>
         <item>@font/smile</item>
         <item>@font/allerta</item>
         <item>@font/autour_one</item>

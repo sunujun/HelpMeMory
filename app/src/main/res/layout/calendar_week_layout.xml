@@ -12,69 +12,83 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:fontFamily="@font/lemon"
         android:gravity="center"
         android:text="SUN"
-        android:textColor="@color/black"
-        android:textSize="14sp" />
+        android:textColor="#D9F4214B"
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/monText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:fontFamily="@font/lemon"
         android:gravity="center"
         android:text="MON"
-        android:textColor="@color/black"
-        android:textSize="14sp" />
+        android:textColor="#34988F"
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tueText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:fontFamily="@font/lemon"
         android:gravity="center"
         android:text="TUE"
-        android:textColor="@color/black"
-        android:textSize="14sp" />
+        android:textColor="#FF34988F"
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/wedText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:fontFamily="@font/lemon"
         android:gravity="center"
         android:text="WED"
-        android:textColor="@color/black"
-        android:textSize="14sp" />
+        android:textColor="#FF33988F"
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/thuText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:fontFamily="@font/lemon"
         android:gravity="center"
         android:text="THU"
-        android:textColor="@color/black"
-        android:textSize="14sp" />
+        android:textColor="#FF33988F"
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/friText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:fontFamily="@font/lemon"
         android:gravity="center"
         android:text="FRI"
-        android:textColor="@color/black"
-        android:textSize="14sp" />
+        android:textColor="#FF34988F"
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/satText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:fontFamily="@font/lemon"
         android:gravity="center"
         android:text="SAT"
-        android:textColor="@color/black"
-        android:textSize="14sp" />
+        android:textColor="#D9F4214B"
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
 </LinearLayout>

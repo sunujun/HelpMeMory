@@ -40,10 +40,12 @@ class AddKeywordFragment : Fragment() {
                 addKeyword(keyword, description)
             }
 
-        }
+                }
+
+            }
 
 
-    }
+
 
     private fun addKeyword(keyword: String, description:String ){
         myViewModel.setAddValues(MyKeywordData(keyword, description))

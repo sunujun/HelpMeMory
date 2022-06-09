@@ -20,15 +20,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="50dp"
-            android:text="폴더 추가"
-            android:textColor="@color/black"/>
+            android:text="폴더 추가 📁"
+            android:textColor="@color/colorAccent"
+            app:iconTint="#000000" />
 
         <Button
             android:id="@+id/addkeyword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="키워드 추가"
-            android:textColor="@color/black"
+            android:text="키워드 추가 🖋"
+            android:textColor="@color/colorAccent"
             />
     </LinearLayout>
 

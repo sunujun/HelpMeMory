@@ -14,13 +14,14 @@ import com.example.helpmemory.databinding.FragmentKeywordBinding
 
 class KeywordFragment : Fragment() {
     private lateinit var binding: FragmentKeywordBinding
-    private var data:ArrayList<MyKeywordData> = ArrayList()
-    private lateinit var adapter : FolderAdapter
-    val myViewModel : MyViewModel by activityViewModels()
+    private var data: ArrayList<MyKeywordData> = ArrayList()
+    private lateinit var adapter: FolderAdapter
+    val myViewModel: MyViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,15 +34,17 @@ class KeywordFragment : Fragment() {
     }
 
     private fun initRecyclerview() {
-        binding.folderlist.layoutManager = LinearLayoutManager(requireContext(),
-            LinearLayoutManager.VERTICAL,false)
+        binding.folderlist.layoutManager = LinearLayoutManager(
+            requireContext(),
+            LinearLayoutManager.VERTICAL, false
+        )
         adapter = FolderAdapter(data)
-        adapter.itemClickListener = object : FolderAdapter.OnItemClickListener{
+        adapter.itemClickListener = object : FolderAdapter.OnItemClickListener {
             override fun OnItemClick(data: MyKeywordData, descriptionView: TextView) {
-                if(data.isClicked){
+                if (data.isClicked) {
                     data.isClicked = false
                     descriptionView.visibility = View.GONE
-                }else{
+                } else {
                     data.isClicked = true
                     descriptionView.visibility = View.VISIBLE
                 }
@@ -53,7 +56,8 @@ class KeywordFragment : Fragment() {
         val simpleItemTouchCallback = object :
             ItemTouchHelper.SimpleCallback(
                 ItemTouchHelper.UP or
-                    ItemTouchHelper.DOWN, ItemTouchHelper.LEFT){
+                        ItemTouchHelper.DOWN, ItemTouchHelper.LEFT
+            ) {
             override fun onMove(
                 p0: RecyclerView,
                 p1: RecyclerView.ViewHolder,
@@ -85,10 +89,9 @@ class KeywordFragment : Fragment() {
 
     private fun initData() {
 
-        if(myViewModel.addvalues.size > 0) {
-            for (i in 0 until myViewModel.addvalues.size)
-            {
-                if(myViewModel.addvalues.size > i) {
+        if (myViewModel.addvalues.size > 0) {
+            for (i in 0 until myViewModel.addvalues.size) {
+                if (myViewModel.addvalues.size > i) {
                     data.add(i, myViewModel.addvalues[i])
                 }
             }
@@ -106,4 +109,5 @@ class KeywordFragment : Fragment() {
 
         }
     }
+
 }

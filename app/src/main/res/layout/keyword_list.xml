@@ -20,7 +20,7 @@
             android:fontFamily="@font/smile"
             android:padding="5dp"
             android:text="뒤로 가기"
-            android:textColor="#5A817E"
+            android:textColor="#FFEB3B"
             android:textSize="18sp"
             android:textStyle="bold" />
 
