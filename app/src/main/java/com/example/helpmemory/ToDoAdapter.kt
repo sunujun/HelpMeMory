@@ -4,10 +4,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.helpmemory.databinding.TodoItemRowBinding
 
-class ToDoAdapter (val onClick: (ToDo) -> Unit) :
-    RecyclerView.Adapter<ToDoAdapter.ToDoViewHolder>() {
+class ToDoAdapter () : RecyclerView.Adapter<ToDoAdapter.ToDoViewHolder>() {
 
     val todos = mutableListOf<ToDo>()
+
+    interface OnItemClickListener {
+        fun OnItemClick(todo: ToDo)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ToDoViewHolder {
         return ToDoViewHolder (
@@ -21,12 +24,14 @@ class ToDoAdapter (val onClick: (ToDo) -> Unit) :
 
     override fun getItemCount(): Int = todos.size
 
+    var itemClickListener: OnItemClickListener? = null
+
     inner class ToDoViewHolder(private val binding: TodoItemRowBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         init {
             itemView.setOnClickListener {
-                onClick(todos[bindingAdapterPosition])
+                itemClickListener?.OnItemClick(todos[bindingAdapterPosition])
             }
         }
 

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:clickable="true"
-    android:focusable="true" >
+    android:focusable="true">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/background_light"
-        android:theme="@style/AppTheme.AppBarOverlay" >
+        android:theme="@style/AppTheme.AppBarOverlay">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:textSize="24sp"
-                tools:text="2019" />
+                tools:text="2019"/>
 
             <TextView
                 android:id="@+id/monthText"
@@ -41,8 +41,7 @@
                 android:fontFamily="sans-serif-light"
                 android:textColor="@color/white"
                 android:textSize="38sp"
-                tools:text="April" />
-
+                tools:text="April"/>
         </LinearLayout>
 
         <include
@@ -51,10 +50,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp" />
-
+            android:layout_marginBottom="10dp"/>
     </com.google.android.material.appbar.AppBarLayout>
-
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -71,7 +68,7 @@
                 android:layout_height="wrap_content"
                 app:cv_dayViewResource="@layout/calendar_day_layout"
                 app:cv_orientation="horizontal"
-                app:cv_scrollMode="paged" />
+                app:cv_scrollMode="paged"/>
 
             <TextView
                 android:id="@+id/selectedDateText"
@@ -87,16 +84,14 @@
                 android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="14sp"
-                tools:text="7 Jan, 2019" />
+                tools:text="7 Jan, 2019"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/toDoList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false" />
-
+                android:nestedScrollingEnabled="false"/>
         </LinearLayout>
-
     </androidx.core.widget.NestedScrollView>
     </LinearLayout>
 
@@ -109,5 +104,5 @@
         app:tint="@color/white"
         app:backgroundTint="@color/red"
         app:srcCompat="@drawable/ic_add"
-        android:contentDescription="TODO" />
+        android:contentDescription="TODO"/>
 </FrameLayout>

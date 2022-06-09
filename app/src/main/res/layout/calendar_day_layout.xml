@@ -14,7 +14,7 @@
         android:gravity="center"
         android:textColor="@color/black"
         android:textSize="16sp"
-        tools:text="22" />
+        tools:text="22"/>
 
     <View
         android:id="@+id/dotView"
@@ -22,5 +22,5 @@
         android:layout_height="4.5dp"
         android:layout_marginBottom="5dp"
         android:layout_gravity="bottom|center_horizontal"
-        android:background="@drawable/today_background" />
+        android:background="@drawable/today_background"/>
 </FrameLayout>
