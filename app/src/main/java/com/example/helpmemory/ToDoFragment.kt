@@ -35,7 +35,7 @@ import java.time.format.TextStyle
 import java.util.*
 
 class ToDoFragment : Fragment() {
-    private lateinit var binding: FragmentToDoBinding
+    private var binding: FragmentToDoBinding? = null
     lateinit var toDoDBHelper: ToDoDBHelper
     // 선택된 날짜
     private var selectedDate: LocalDate? = null
@@ -86,7 +86,7 @@ class ToDoFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentToDoBinding.inflate(layoutInflater)
 
-        return binding.root
+        return binding!!.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -94,14 +94,16 @@ class ToDoFragment : Fragment() {
 
         toDoDBHelper = ToDoDBHelper(this)
         todoAdapter = ToDoAdapter()
+        todoAdapter.todos.clear()
         todoAdapter.todos.addAll(toDoDBHelper.selectToDo())
-        binding.toDoList.apply {
+        binding!!.toDoList.apply {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
             adapter = todoAdapter
             addItemDecoration(DividerItemDecoration(requireContext(), RecyclerView.VERTICAL))
         }
 
         // DB에서 데이터 불러오기
+        todos.clear()
         for (receivedTodo in toDoDBHelper.selectToDo()) {
             todos[receivedTodo.date] = todos[receivedTodo.date].orEmpty().plus(receivedTodo)
             updateAdapterForDate(receivedTodo.date)
@@ -144,7 +146,7 @@ class ToDoFragment : Fragment() {
 
         // 날짜 위에 요일 표시하는 부분
         val daysOfWeek = daysOfWeekFromLocale()
-        binding.weekLayout.root.children.forEachIndexed { index, view ->
+        binding!!.weekLayout.root.children.forEachIndexed { index, view ->
             (view as TextView).apply {
                 text = daysOfWeek[index].getDisplayName(TextStyle.SHORT, Locale.ENGLISH).uppercase(Locale.ENGLISH)
                 setTextColorRes(R.color.white_light)
@@ -152,14 +154,14 @@ class ToDoFragment : Fragment() {
         }
         // 현재 보이는 달력의 월
         val currentMonth = YearMonth.now()
-        binding.calendarView.apply {
+        binding!!.calendarView.apply {
             // 달력 최초 setup
             setup(currentMonth.minusMonths(10), currentMonth.plusMonths(10), daysOfWeek.first())
             scrollToMonth(currentMonth)
         }
 
         if (savedInstanceState == null) {
-            binding.calendarView.post {
+            binding!!.calendarView.post {
                 // 초기 날짜를 오늘로 설정
                 selectDate(today)
             }
@@ -178,7 +180,7 @@ class ToDoFragment : Fragment() {
                 }
             }
         }
-        binding.calendarView.dayBinder = object : DayBinder<DayViewContainer> {
+        binding!!.calendarView.dayBinder = object : DayBinder<DayViewContainer> {
             override fun create(view: View) = DayViewContainer(view)
             override fun bind(container: DayViewContainer, day: CalendarDay) {
                 container.day = day
@@ -218,23 +220,23 @@ class ToDoFragment : Fragment() {
         }
 
         // 달력 좌우 스크롤 시, 발생하는 동작
-        binding.calendarView.monthScrollListener = {
-            if (binding.calendarView.maxRowCount == 6) {
-                binding.yearText.text = it.yearMonth.year.toString()
-                binding.monthText.text = monthTitleFormatter.format(it.yearMonth)
+        binding!!.calendarView.monthScrollListener = {
+            if (binding!!.calendarView.maxRowCount == 6) {
+                binding!!.yearText.text = it.yearMonth.year.toString()
+                binding!!.monthText.text = monthTitleFormatter.format(it.yearMonth)
             } else {
                 val firstDate = it.weekDays.first().first().date
                 val lastDate = it.weekDays.last().last().date
                 if (firstDate.yearMonth == lastDate.yearMonth) {
-                    binding.yearText.text = firstDate.yearMonth.year.toString()
-                    binding.monthText.text = monthTitleFormatter.format(firstDate)
+                    binding!!.yearText.text = firstDate.yearMonth.year.toString()
+                    binding!!.monthText.text = monthTitleFormatter.format(firstDate)
                 } else {
-                    binding.monthText.text =
+                    binding!!.monthText.text =
                         "${monthTitleFormatter.format(firstDate)} - ${monthTitleFormatter.format(lastDate)}"
                     if (firstDate.year == lastDate.year) {
-                        binding.yearText.text = firstDate.yearMonth.year.toString()
+                        binding!!.yearText.text = firstDate.yearMonth.year.toString()
                     } else {
-                        binding.yearText.text = "${firstDate.yearMonth.year} - ${lastDate.yearMonth.year}"
+                        binding!!.yearText.text = "${firstDate.yearMonth.year} - ${lastDate.yearMonth.year}"
                     }
                 }
             }
@@ -242,7 +244,7 @@ class ToDoFragment : Fragment() {
             selectDate(it.yearMonth.atDay(1))
         }
 
-        binding.addButton.setOnClickListener {
+        binding!!.addButton.setOnClickListener {
             inputDialog.show()
         }
     }
@@ -252,8 +254,8 @@ class ToDoFragment : Fragment() {
         if (selectedDate != date) {
             val oldDate = selectedDate
             selectedDate = date
-            oldDate?.let { binding.calendarView.notifyDateChanged(it) }
-            binding.calendarView.notifyDateChanged(date)
+            oldDate?.let { binding!!.calendarView.notifyDateChanged(it) }
+            binding!!.calendarView.notifyDateChanged(date)
             updateAdapterForDate(date)
         }
     }
@@ -265,7 +267,7 @@ class ToDoFragment : Fragment() {
             todos.addAll(this@ToDoFragment.todos[date].orEmpty())
             notifyDataSetChanged()
         }
-        binding.selectedDateText.text = selectionFormatter.format(date)
+        binding!!.selectedDateText.text = selectionFormatter.format(date)
     }
 
     // todo 추가 함수
@@ -291,5 +293,10 @@ class ToDoFragment : Fragment() {
         todos[date] = todos[date].orEmpty().minus(todo)
         toDoDBHelper.deleteToDo(todo.id)
         updateAdapterForDate(date)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 }
