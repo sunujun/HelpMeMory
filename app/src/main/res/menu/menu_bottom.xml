@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/toDo"
         android:enabled="true"
-        android:title="투두리스트"
+        android:title="ToDoList🌺"
         app:showAsAction="ifRoom" />
     <item android:id="@+id/keyword"
-        android:title="키워드"
+        android:title="KeyWord🌷"
         app:showAsAction="ifRoom" />
 </menu>

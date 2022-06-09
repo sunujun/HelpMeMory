@@ -149,7 +149,7 @@ class ToDoFragment : Fragment() {
         binding!!.weekLayout.root.children.forEachIndexed { index, view ->
             (view as TextView).apply {
                 text = daysOfWeek[index].getDisplayName(TextStyle.SHORT, Locale.ENGLISH).uppercase(Locale.ENGLISH)
-                setTextColorRes(R.color.white_light)
+                setTextColorRes(R.color.teal_700)
             }
         }
         // 현재 보이는 달력의 월

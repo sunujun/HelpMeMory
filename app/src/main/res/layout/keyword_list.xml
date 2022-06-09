@@ -12,15 +12,19 @@
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#FFFFFF"
-            android:backgroundTint="#FFFFFF"
-            app:srcCompat="@drawable/foldericon" />
-
+        <Button
+            android:id="@+id/backbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/circle_button"
+            android:fontFamily="@font/smile"
+            android:padding="5dp"
+            android:text="뒤로 가기"
+            android:textColor="#FFEB3B"
+            android:textSize="18sp"
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"

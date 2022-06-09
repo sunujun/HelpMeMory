@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#E7FAE8"
     android:clickable="true"
     android:focusable="true">
     <LinearLayout
@@ -18,11 +18,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/background_light"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:backgroundTintMode="add"
+        android:backgroundTint="#C6EDFF">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#000000"
             android:orientation="vertical"
             android:padding="14dp">
 
@@ -30,18 +33,23 @@
                 android:id="@+id/yearText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:fontFamily="@font/rammetto_one"
+                android:textColor="#495DCD"
                 android:textSize="24sp"
-                tools:text="2019"/>
+                android:textStyle="bold"
+                tools:text="2019💙" />
 
             <TextView
                 android:id="@+id/monthText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
-                android:textColor="@color/white"
-                android:textSize="38sp"
-                tools:text="April"/>
+                android:layout_gravity="center"
+                android:fontFamily="@font/rammetto_one"
+                android:textColor="#C33EDA"
+                android:textSize="36sp"
+                tools:text="April" />
+
         </LinearLayout>
 
         <include
@@ -76,15 +84,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="#EEEEEE"
-                android:fontFamily="sans-serif-medium"
+                android:backgroundTint="#E5FFFD"
+                android:fontFamily="@font/balsamiq_sans"
                 android:paddingStart="20dp"
                 android:paddingTop="12dp"
                 android:paddingEnd="20dp"
                 android:paddingBottom="12dp"
                 android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                tools:text="7 Jan, 2019"/>
+                android:textColor="#D90E0B0B"
+                android:textSize="15sp"
+                tools:text="7 Jan, 2019" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/toDoList"
@@ -101,8 +110,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="20dp"
-        app:tint="@color/white"
-        app:backgroundTint="@color/red"
+        android:contentDescription="TODO"
+        app:backgroundTint="#FFEB3B"
         app:srcCompat="@drawable/ic_add"
-        android:contentDescription="TODO"/>
+        app:tint="#D9000000" />
+
 </FrameLayout>

@@ -69,7 +69,6 @@ class AddKeywordFragment : Fragment() {
     }
 
     private fun addKeyword(keyword: String, description:String ){
-
         val key = keyword
         val des =description
         val id =  UUID.randomUUID().toString()

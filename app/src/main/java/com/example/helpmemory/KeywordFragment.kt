@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.helpmemory.databinding.FragmentKeywordBinding
 
 class KeywordFragment : Fragment() {
+
     private var binding: FragmentKeywordBinding? = null
 
     lateinit var myDBHelper: MyKeywordDBHelper
@@ -29,6 +30,7 @@ class KeywordFragment : Fragment() {
 
         super.onCreate(savedInstanceState)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,8 +48,6 @@ class KeywordFragment : Fragment() {
     private fun getAllRecord(){
         myDBHelper.getAllRecord()
     }
-
-
 
     fun initRecyclerview() {
         if(myDBHelper.keywordData.size != data.size) {
@@ -67,7 +67,7 @@ class KeywordFragment : Fragment() {
                 if(data.isClicked){
                     data.isClicked = false
                     descriptionView.visibility = View.GONE
-                }else{
+                } else {
                     data.isClicked = true
                     descriptionView.visibility = View.VISIBLE
                 }
@@ -89,15 +89,12 @@ class KeywordFragment : Fragment() {
                 }
             }
         }
-
-
         binding!!.folderlist.adapter = adapter
-
-
         val simpleItemTouchCallback = object :
             ItemTouchHelper.SimpleCallback(
                 ItemTouchHelper.UP or
-                    ItemTouchHelper.DOWN, ItemTouchHelper.LEFT){
+                        ItemTouchHelper.DOWN, ItemTouchHelper.LEFT
+            ) {
             override fun onMove(
                 p0: RecyclerView,
                 p1: RecyclerView.ViewHolder,
@@ -113,21 +110,15 @@ class KeywordFragment : Fragment() {
 
         }
         val itemTouchHelper = ItemTouchHelper(simpleItemTouchCallback)
-
         itemTouchHelper.attachToRecyclerView(binding!!.folderlist)
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding!!.addFolOrKey.setOnClickListener {
             val bottomSheet = BottomSheet()
-
             bottomSheet.show(parentFragmentManager, bottomSheet.tag)
-
         }
     }
-
-
 }
