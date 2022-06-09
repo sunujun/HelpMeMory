@@ -58,14 +58,6 @@ class ToDoFragment : Fragment() {
                         dlgBinding.inputToDo.text.toString()
                 saveTodo(message)
                 dlgBinding.inputToDo.setText("")
-                val timeTask = object : TimerTask() {
-                    override fun run() {
-//                        makeNotification()
-                    }
-                }
-//                val timer = Timer()
-//                timer.schedule(timeTask, 5000)
-//                Toast.makeText(requireContext(), "알림이 추가됨", Toast.LENGTH_SHORT).show()
             }
             .setNegativeButton("취소", null)
             .create()

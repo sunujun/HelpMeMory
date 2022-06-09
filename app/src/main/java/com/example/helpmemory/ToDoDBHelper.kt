@@ -69,17 +69,6 @@ class ToDoDBHelper(val fragment: ToDoFragment) : SQLiteOpenHelper(fragment.requi
         db.close()
     }
 
-    // select * from product where name = 'string';
-    fun findToDo(date: Int): Boolean {
-        val strsql = "select * from $TABLE_NAME where $DATE = '$date';"
-        val db = readableDatabase
-        val cursor = db.rawQuery(strsql, null)
-        val flag = cursor.count!=0
-        cursor.close()
-        db.close()
-        return flag
-    }
-
     fun deleteToDo(id: String) {
         val db = writableDatabase
         db.delete(TABLE_NAME, "$ID = ?", arrayOf(id))
