@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.HelpMeMory" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#8BC34A</item>
-        <item name="colorPrimaryVariant">#A2DF5B</item>
+        <item name="colorPrimary">#B1F166</item>
+        <item name="colorPrimaryVariant">#B0F164</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>

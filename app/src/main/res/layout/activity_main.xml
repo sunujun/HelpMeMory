@@ -18,10 +18,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:itemBackground="@drawable/shootingstars"
+        app:itemPaddingTop="@dimen/text_margin"
         app:itemTextColor="#000000"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_bottom" />
 

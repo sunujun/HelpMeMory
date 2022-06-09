@@ -7,17 +7,22 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <TextView
             android:id="@+id/textView"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
             android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@color/skyblue"
+            android:backgroundTint="#FAF3B9"
+            android:fontFamily="@font/smile"
             android:padding="15dp"
             android:paddingRight="0dp"
-            android:background="@color/skyblue"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/descriptionView"
@@ -26,15 +31,23 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginBottom="15dp"
+            android:background="@color/white"
+            android:backgroundTint="#E2F5F8"
+            android:fontFamily="@font/smile"
             android:padding="15dp"
             android:paddingRight="0dp"
-            android:background="@color/white"
             android:text="TextView" />
     </LinearLayout>
+
     <Button
         android:id="@+id/deletebtn"
         android:layout_width="65dp"
         android:layout_height="50dp"
         android:layout_marginTop="15dp"
-        android:text="삭제"></Button>
+        android:background="@drawable/circle_button"
+        android:fontFamily="@font/smile"
+        android:text="삭제"
+        android:textColor="#E91E63"
+        android:textSize="18sp"
+        android:textStyle="bold"></Button>
 </LinearLayout>
