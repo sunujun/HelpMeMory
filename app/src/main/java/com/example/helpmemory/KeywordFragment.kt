@@ -1,6 +1,7 @@
 package com.example.helpmemory
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,11 +15,15 @@ import com.example.helpmemory.databinding.FragmentKeywordBinding
 
 class KeywordFragment : Fragment() {
     private lateinit var binding: FragmentKeywordBinding
-    private var data:ArrayList<MyKeywordData> = ArrayList()
+    lateinit var myDBHelper: MyKeywordDBHelper
+    var data:ArrayList<MyKeywordData> = ArrayList()
     private lateinit var adapter : FolderAdapter
     val myViewModel : MyViewModel by activityViewModels()
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        binding = FragmentKeywordBinding.inflate(layoutInflater)
+
         super.onCreate(savedInstanceState)
     }
     override fun onCreateView(
@@ -26,15 +31,29 @@ class KeywordFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentKeywordBinding.inflate(layoutInflater)
-        initData()
+        myDBHelper = MyKeywordDBHelper(requireContext())
+
+        myDBHelper.getAllRecord()
+
         initRecyclerview()
+
         return binding.root
     }
 
-    private fun initRecyclerview() {
+
+
+    fun initRecyclerview() {
+
+        if(myDBHelper.keywordData.size != data.size) {
+            if(myDBHelper.keywordData.size > 0)
+                data.addAll(myDBHelper.keywordData)
+        }else if(myDBHelper.addKeywordcheck){
+            data.addAll(myDBHelper.keywordData)
+            myDBHelper.addKeywordcheck = false
+        }
         binding.folderlist.layoutManager = LinearLayoutManager(requireContext(),
             LinearLayoutManager.VERTICAL,false)
+        Log.d("initRecyclerview",data.toString())
         adapter = FolderAdapter(data)
         adapter.itemClickListener = object : FolderAdapter.OnItemClickListener{
             override fun OnItemClick(data: MyKeywordData, descriptionView: TextView) {
@@ -49,6 +68,7 @@ class KeywordFragment : Fragment() {
         }
 
         binding.folderlist.adapter = adapter
+
 
         val simpleItemTouchCallback = object :
             ItemTouchHelper.SimpleCallback(
@@ -71,28 +91,6 @@ class KeywordFragment : Fragment() {
         val itemTouchHelper = ItemTouchHelper(simpleItemTouchCallback)
 
         itemTouchHelper.attachToRecyclerView(binding.folderlist)
-    }
-
-//    fun readFileScan(scan:Scanner){
-//        while(scan.hasNextLine()){
-//            val word = scan.nextLine()
-//            val meaning = scan.nextLine()
-//
-//            data.add(MyKeywordData(word, meaning))
-//        }
-//    }
-
-
-    private fun initData() {
-
-        if(myViewModel.addvalues.size > 0) {
-            for (i in 0 until myViewModel.addvalues.size)
-            {
-                if(myViewModel.addvalues.size > i) {
-                    data.add(i, myViewModel.addvalues[i])
-                }
-            }
-        }
     }
 
 

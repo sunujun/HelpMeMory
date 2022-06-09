@@ -11,6 +11,7 @@ class FolderAdapter (
     private val values: ArrayList<MyKeywordData>
     ) : RecyclerView.Adapter<FolderAdapter.FolderViewHolder>() {
 
+
     interface OnItemClickListener{
         fun OnItemClick(data:MyKeywordData, descriptionView: TextView)
     }
@@ -36,7 +37,6 @@ class FolderAdapter (
             binding.textView.setOnClickListener {
                 itemClickListener?.OnItemClick(values[bindingAdapterPosition], binding.descriptionView)
                 //수업에서 다뤘던 영어단어장에서는 bindingAdapterPosition이 아닌 adapterPosition을 사용했다.
-                //
             }
 
         }
@@ -44,7 +44,6 @@ class FolderAdapter (
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FolderViewHolder {
         val binding = FolderItemRowBinding.inflate(LayoutInflater.from(parent.context),parent, false)
-
         return FolderViewHolder(binding)
 
     }
@@ -61,5 +60,10 @@ class FolderAdapter (
             holder.binding.descriptionView.visibility = View.VISIBLE
 
         }
+
+//        holder.binding.deletebtn.setOnClickListener {
+//            MyKeywordDBHelper?.
+//        }
+
     }
 }
