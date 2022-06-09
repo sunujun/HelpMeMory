@@ -9,6 +9,7 @@ import com.example.helpmemory.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
+    var firstKeyFrag = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,4 +36,5 @@ class MainActivity : AppCompatActivity() {
             commit()
         }
     }
+
 }
