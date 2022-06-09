@@ -102,7 +102,7 @@
         android:layout_gravity="end|bottom"
         android:layout_margin="20dp"
         app:tint="@color/white"
-        app:backgroundTint="@color/colorAccent"
+        app:backgroundTint="@color/red"
         app:srcCompat="@drawable/ic_add"
         android:contentDescription="TODO"/>
 </FrameLayout>

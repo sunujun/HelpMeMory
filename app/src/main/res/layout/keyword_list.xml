@@ -1,106 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/backbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/circle_button"
-            android:fontFamily="@font/smile"
-            android:padding="5dp"
-            android:text="뒤로 가기"
-            android:textColor="#5A817E"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#FFFFFF"
+            android:backgroundTint="#FFFFFF"
+            app:srcCompat="@drawable/foldericon" />
 
         <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="#BBE3F4"
+            android:layout_margin="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="#DAFBB3"
+            android:backgroundTint="#FFFFFF"
             android:fontFamily="@font/smile"
-            android:gravity="left"
-            android:padding="5dp"
-            android:text="카드 목록 ♬"
-            android:textColor="#D47DE3"
-            android:textSize="48sp"
+            android:gravity="center_horizontal"
+            android:padding="12dp"
+            android:text="내 폴더 목록"
+            android:textColor="#41C1B5"
+            android:textSize="30sp"
             android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/imgbtn2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:backgroundTint="#FFFFFF"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/plusimg2" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="404dp"
+        android:orientation="vertical">
 
-        <RadioGroup
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:backgroundTint="#FFFFFF">
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="15dp"
+            android:background="@color/lowpink" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/regrdbtn"
-                    android:layout_width="20dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="#BCF3FA"
-                    android:fontFamily="@font/smile"
-                    android:text="등록순 ✿"
-                    android:textColor="#7F8EE3"
-                    android:textSize="20sp"
-                    android:textStyle="bold|italic" />
-
-                <RadioButton
-                    android:id="@+id/rdmrdbtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="30dp"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/smile"
-                    android:text="랜덤순 ✿"
-                    android:textColor="#7F8EE3"
-                    android:textSize="20sp"
-                    android:textStyle="bold|italic" />
-
-            </LinearLayout>
-
-        </RadioGroup>
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <com.google.android.material.tabs.TabLayout
         android:layout_width="match_parent"
-        android:layout_height="299dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/lowpink"
-        android:layout_marginBottom="10dp"
-        android:padding="10dp" />
+        android:layout_height="37dp"
+        android:layout_marginTop="20dp">
 
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/welsh2" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To Do List ☑" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="키워드공부 ✪" />
+
+    </com.google.android.material.tabs.TabLayout>
+
 
 </LinearLayout>
