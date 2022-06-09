@@ -26,9 +26,13 @@
         <entry key="..\:/Users/tiger/AndroidStudioProjects/appFinal/HelpMeMory/app/src/main/res/layout/calendar_day_layout.xml" value="0.1890625" />
         <entry key="..\:/Users/tiger/AndroidStudioProjects/appFinal/HelpMeMory/app/src/main/res/layout/calendar_week_layout.xml" value="0.1890625" />
         <entry key="..\:/Users/tiger/AndroidStudioProjects/appFinal/HelpMeMory/app/src/main/res/layout/folder_item_row.xml" value="0.1890625" />
+        <entry key="..\:/Users/tiger/AndroidStudioProjects/appFinal/HelpMeMory/app/src/main/res/layout/fragment_add_keyword.xml" value="0.1890625" />
+        <entry key="..\:/Users/tiger/AndroidStudioProjects/appFinal/HelpMeMory/app/src/main/res/layout/fragment_keyword.xml" value="0.1890625" />
         <entry key="..\:/Users/tiger/AndroidStudioProjects/appFinal/HelpMeMory/app/src/main/res/layout/fragment_to_do.xml" value="0.1890625" />
         <entry key="..\:/Users/tiger/AndroidStudioProjects/appFinal/HelpMeMory/app/src/main/res/layout/keyword_item.xml" value="0.1890625" />
+        <entry key="..\:/Users/tiger/AndroidStudioProjects/appFinal/HelpMeMory/app/src/main/res/layout/keyword_item_row.xml" value="0.1890625" />
         <entry key="..\:/Users/tiger/AndroidStudioProjects/appFinal/HelpMeMory/app/src/main/res/layout/keyword_list.xml" value="0.1890625" />
+        <entry key="..\:/Users/tiger/AndroidStudioProjects/appFinal/HelpMeMory/app/src/main/res/layout/new_keyword.xml" value="0.1890625" />
       </map>
     </option>
   </component>

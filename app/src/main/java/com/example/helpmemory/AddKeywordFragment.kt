@@ -1,5 +1,9 @@
 package com.example.helpmemory
 
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -55,12 +59,57 @@ class AddKeywordFragment : Fragment() {
 
     private fun initLayout() {
         myDBHelper = MyKeywordDBHelper(requireContext())
+        val alarmManager = requireActivity().getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(activity, MyReceiver::class.java)
         binding.apply {
             Regbtn.setOnClickListener {
                 val keyword = inputKeyword.text.toString()
                 val description = inputDescription.text.toString()
-
+                intent.putExtra("title", "$keyword")
+                val pendingIntent1 = PendingIntent.getBroadcast(
+                    context, System.nanoTime().toInt(), intent,
+                    PendingIntent.FLAG_IMMUTABLE
+                )
+                val pendingIntent2 = PendingIntent.getBroadcast(
+                    context, System.nanoTime().toInt(), intent,
+                    PendingIntent.FLAG_IMMUTABLE
+                )
+                val pendingIntent3 = PendingIntent.getBroadcast(
+                    context, System.nanoTime().toInt(), intent,
+                    PendingIntent.FLAG_IMMUTABLE
+                )
+                val pendingIntent4 = PendingIntent.getBroadcast(
+                    context, System.nanoTime().toInt(), intent,
+                    PendingIntent.FLAG_IMMUTABLE
+                )
+                val triggerTime1 = (System.currentTimeMillis() + 600000) // 10분
+                val triggerTime2 = (System.currentTimeMillis() + 86400000) // 하루
+                val triggerTime3 = (System.currentTimeMillis() + 604800000) // 일주일
+                val triggerTime4 = (System.currentTimeMillis() + 2592000000) // 한 달
+                alarmManager.setExactAndAllowWhileIdle(
+                    AlarmManager.RTC_WAKEUP,
+                    triggerTime1,
+                    pendingIntent1
+                )
+                alarmManager.setExactAndAllowWhileIdle(
+                    AlarmManager.RTC_WAKEUP,
+                    triggerTime2,
+                    pendingIntent2
+                )
+                alarmManager.setExactAndAllowWhileIdle(
+                    AlarmManager.RTC_WAKEUP,
+                    triggerTime3,
+                    pendingIntent3
+                )
+                alarmManager.setExactAndAllowWhileIdle(
+                    AlarmManager.RTC_WAKEUP,
+                    triggerTime4,
+                    pendingIntent4
+                )
                 addKeyword(keyword, description)
+            }
+            Cancbtn.setOnClickListener {
+                initFragment(keywordFragment)
             }
         }
     }
