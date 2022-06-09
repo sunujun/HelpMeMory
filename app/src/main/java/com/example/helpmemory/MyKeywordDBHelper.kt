@@ -26,7 +26,9 @@ class MyKeywordDBHelper(val context: Context) : SQLiteOpenHelper(context, DB_NAM
         val strsql = "select * from $TABLE_NAME;"
         val db = readableDatabase
         val cursor = db.rawQuery(strsql,null)
-        transData(cursor)
+        if(cursor.count >0) {
+            transData(cursor)
+        }
         cursor.close()
         db.close()
     }
@@ -38,14 +40,16 @@ class MyKeywordDBHelper(val context: Context) : SQLiteOpenHelper(context, DB_NAM
         cursor.moveToFirst()
         val attrcount = cursor.columnCount
         do {
-            for(i in 1 until attrcount step 3){
+
+            for (i in 1 until attrcount step 3) {
                 keyword = cursor.getString(i)
-                description = cursor.getString(i+1)
-                id = cursor.getString(i-1)
-                Log.d("test", keyword+description+id)
+                description = cursor.getString(i + 1)
+                id = cursor.getString(i - 1)
+                Log.d("test", keyword + description + id)
                 keywordData.add(MyKeywordData(keyword, description, id))
 
             }
+
         }while (cursor.moveToNext())
 
     }
@@ -55,7 +59,6 @@ class MyKeywordDBHelper(val context: Context) : SQLiteOpenHelper(context, DB_NAM
         values.put(KID, keywordData.id)
         values.put(KEY, keywordData.keyword)
         values.put(DES, keywordData.description)
-
         if(!addKeywordcheck){
             addKeywordcheck = true
         }
@@ -120,4 +123,6 @@ class MyKeywordDBHelper(val context: Context) : SQLiteOpenHelper(context, DB_NAM
         db.close()
         return flag
     }
+
+
 }

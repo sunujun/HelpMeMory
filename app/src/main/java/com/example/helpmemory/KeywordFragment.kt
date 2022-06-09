@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -14,10 +15,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.helpmemory.databinding.FragmentKeywordBinding
 
 class KeywordFragment : Fragment() {
-    private lateinit var binding: FragmentKeywordBinding
+    private var binding: FragmentKeywordBinding? = null
+
     lateinit var myDBHelper: MyKeywordDBHelper
     var data:ArrayList<MyKeywordData> = ArrayList()
-    private lateinit var adapter : FolderAdapter
+    private lateinit var adapter : KeywordAdapter
+    var id = ""
     val myViewModel : MyViewModel by activityViewModels()
 
 
@@ -33,17 +36,20 @@ class KeywordFragment : Fragment() {
         // Inflate the layout for this fragment
         myDBHelper = MyKeywordDBHelper(requireContext())
 
-        myDBHelper.getAllRecord()
+        getAllRecord()
 
         initRecyclerview()
 
-        return binding.root
+        return binding!!.root
+    }
+
+    private fun getAllRecord(){
+        myDBHelper.getAllRecord()
     }
 
 
 
     fun initRecyclerview() {
-
         if(myDBHelper.keywordData.size != data.size) {
             if(myDBHelper.keywordData.size > 0)
                 data.addAll(myDBHelper.keywordData)
@@ -51,12 +57,13 @@ class KeywordFragment : Fragment() {
             data.addAll(myDBHelper.keywordData)
             myDBHelper.addKeywordcheck = false
         }
-        binding.folderlist.layoutManager = LinearLayoutManager(requireContext(),
+        binding!!.folderlist.layoutManager = LinearLayoutManager(requireContext(),
             LinearLayoutManager.VERTICAL,false)
         Log.d("initRecyclerview",data.toString())
-        adapter = FolderAdapter(data)
-        adapter.itemClickListener = object : FolderAdapter.OnItemClickListener{
+        adapter = KeywordAdapter(data)
+        adapter.itemClickListener = object : KeywordAdapter.OnItemClickListener{
             override fun OnItemClick(data: MyKeywordData, descriptionView: TextView) {
+                id = data.id
                 if(data.isClicked){
                     data.isClicked = false
                     descriptionView.visibility = View.GONE
@@ -67,7 +74,24 @@ class KeywordFragment : Fragment() {
             }
         }
 
-        binding.folderlist.adapter = adapter
+        adapter.delBtnClickListner = object : KeywordAdapter.OnDelBtnClickListener{
+            override fun OnDelBtnClickListener(mydata: MyKeywordData, descriptionView: TextView) {
+                val result = myDBHelper.deleteKeyword(mydata.id)
+                if(result){
+                    data.clear()
+                    myDBHelper.keywordData.clear()
+                    getAllRecord()
+                    data.addAll(myDBHelper.keywordData)
+                    adapter.notifyDataSetChanged()
+                    Toast.makeText(requireContext(), "Data DELETE SUCCESS", Toast.LENGTH_SHORT).show()
+                }else{
+                    Toast.makeText(requireContext(), "Data DELETE SUCCESS", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+
+        binding!!.folderlist.adapter = adapter
 
 
         val simpleItemTouchCallback = object :
@@ -90,18 +114,20 @@ class KeywordFragment : Fragment() {
         }
         val itemTouchHelper = ItemTouchHelper(simpleItemTouchCallback)
 
-        itemTouchHelper.attachToRecyclerView(binding.folderlist)
+        itemTouchHelper.attachToRecyclerView(binding!!.folderlist)
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.addFolOrKey.setOnClickListener {
+        binding!!.addFolOrKey.setOnClickListener {
             val bottomSheet = BottomSheet()
 
             bottomSheet.show(parentFragmentManager, bottomSheet.tag)
 
         }
     }
+
+
 }
