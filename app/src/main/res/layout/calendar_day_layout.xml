@@ -24,5 +24,5 @@
         android:layout_height="4.5dp"
         android:layout_marginBottom="5dp"
         android:layout_gravity="bottom|center_horizontal"
-        android:background="@drawable/today_background" />
+        android:background="@drawable/today_background"/>
 </FrameLayout>

@@ -19,6 +19,7 @@
         android:textSize="14sp"
         android:textStyle="bold" />
 
+
     <TextView
         android:id="@+id/monText"
         android:layout_width="0dp"
@@ -31,6 +32,7 @@
         android:textSize="14sp"
         android:textStyle="bold" />
 
+
     <TextView
         android:id="@+id/tueText"
         android:layout_width="0dp"
@@ -42,6 +44,7 @@
         android:textColor="#FF34988F"
         android:textSize="14sp"
         android:textStyle="bold" />
+
 
     <TextView
         android:id="@+id/wedText"
