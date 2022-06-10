@@ -13,7 +13,7 @@
         android:fontFamily="@font/smile"
         android:gravity="center"
         android:padding="10dp"
-        android:text="키워드명"
+        android:text="키워드명 🐥"
         android:textColor="#3C53D5"
         android:textSize="36sp"
         android:textStyle="bold" />

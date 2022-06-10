@@ -16,7 +16,7 @@
         android:gravity="center"
         android:padding="10dp"
         android:text="새 단어 등록📝"
-        android:textColor="#FF2A66"
+        android:textColor="#CF5DE3"
         android:textSize="42sp"
         android:textStyle="bold" />
 
@@ -48,7 +48,7 @@
                 android:layout_height="210dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:backgroundTint="#DBFAC9"
+                android:backgroundTint="#FBE6A5"
                 android:gravity="center"
                 android:hint="키워드의 내용 및 중요한 점을 입력해주세요." />
 
@@ -71,7 +71,7 @@
             android:fontFamily="@font/smile"
             android:foregroundTint="#FFFFFF"
             android:text="등록하기"
-            android:textColor="#FFEB3B"
+            android:textColor="#EC477F"
             android:textSize="16sp"
             android:textStyle="bold"
             app:iconTint="#F4EFEF"

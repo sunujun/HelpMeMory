@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E7FAE8"
+    android:background="#F8E1FB"
     android:clickable="true"
     android:focusable="true">
     <LinearLayout
@@ -25,7 +25,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#000000"
+            android:backgroundTint="#FFFFFF"
             android:orientation="vertical"
             android:padding="14dp">
 
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/rammetto_one"
-                android:textColor="#495DCD"
+                android:textColor="#687DED"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 tools:text="2019💙" />
@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/rammetto_one"
-                android:textColor="#C33EDA"
+                android:textColor="#55B859"
                 android:textSize="36sp"
                 tools:text="April" />
 
@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="#EEEEEE"
-                android:backgroundTint="#E5FFFD"
+                android:backgroundTint="#FDF189"
                 android:fontFamily="@font/balsamiq_sans"
                 android:paddingStart="20dp"
                 android:paddingTop="12dp"
@@ -111,8 +111,8 @@
         android:layout_gravity="end|bottom"
         android:layout_margin="20dp"
         android:contentDescription="TODO"
-        app:backgroundTint="#FFEB3B"
+        app:backgroundTint="#132EC3"
         app:srcCompat="@drawable/ic_add"
-        app:tint="#D9000000" />
+        app:tint="#83E8DF" />
 
 </FrameLayout>
