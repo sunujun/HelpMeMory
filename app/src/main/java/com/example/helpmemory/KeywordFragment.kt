@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,8 +21,14 @@ class KeywordFragment : Fragment() {
     var data:ArrayList<MyKeywordData> = ArrayList()
     private lateinit var adapter : KeywordAdapter
     var id = ""
-    val myViewModel : MyViewModel by activityViewModels()
 
+
+    private fun initFragment(fragment: Fragment) {
+        parentFragmentManager.beginTransaction().apply {
+            replace(R.id.menuFrameLayout, fragment)
+            commit()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = FragmentKeywordBinding.inflate(layoutInflater)
@@ -41,6 +46,10 @@ class KeywordFragment : Fragment() {
         getAllRecord()
 
         initRecyclerview()
+
+        binding!!.addKey.setOnClickListener {
+            initFragment(AddKeywordFragment())
+        }
 
         return binding!!.root
     }
@@ -113,12 +122,8 @@ class KeywordFragment : Fragment() {
         itemTouchHelper.attachToRecyclerView(binding!!.folderlist)
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding!!.addFolOrKey.setOnClickListener {
-            val bottomSheet = BottomSheet()
-            bottomSheet.show(parentFragmentManager, bottomSheet.tag)
-        }
+
     }
 }
