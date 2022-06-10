@@ -4,7 +4,9 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -59,7 +61,20 @@ class AddKeywordFragment : Fragment() {
 
     private fun initLayout() {
         myDBHelper = MyKeywordDBHelper(requireContext())
+        var hasPermission = false
+
         val alarmManager = requireActivity().getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+           hasPermission = alarmManager.canScheduleExactAlarms()
+            if(!hasPermission){
+                val permissionIntent = Intent().apply {
+                    action = Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM
+                }
+                startActivity(permissionIntent)
+            }
+        }
+
+
         val intent = Intent(activity, MyReceiver::class.java)
         binding.apply {
             Regbtn.setOnClickListener {
